@@ -52,7 +52,7 @@ body {
 
 
 .link {
-  color: #0071BC;
+  color: #A2A2D0;
   text-decoration: none;
 }
 
@@ -65,7 +65,7 @@ body {
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #0071BC;
+    color: #A2A2D0;
 }
 
 .dnerf {
@@ -128,7 +128,7 @@ body {
 }
 
 .publication-authors a {
-   color: #0071BC;
+   color: #A2A2D0;
 }
 
 .publication-authors a:hover {
