@@ -56,6 +56,11 @@ body {
   text-decoration: none;
 }
 
+.link .hero-body {
+  color: #A2A2D0;
+  text-decoration: none;
+}
+
 
 .footer .icon-link {
     font-size: 25px;
