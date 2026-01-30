@@ -52,24 +52,24 @@ body {
 
 
 .link {
-  color: #A2A2D0;
+  color: #8878C3;
   text-decoration: none;
 }
 
 .link .hero-body {
-  color: #A2A2D0;
+  color: #8878C3;
   text-decoration: none;
 }
 
 
-/* unvisited link */
+/* unvisited link #8878C3 */
 a:link {
-  color: #A2A2D0;
+  color: #8878C3;
 }
 
 /* visited link */
 a:visited {
-  color: 	#A2A2D0;
+  color: 	#8878C3;
 }
 
 /* mouse over link */
@@ -90,7 +90,7 @@ a:active {
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #A2A2D0;
+    color: #8878C3;
 }
 
 .dnerf {
@@ -153,7 +153,7 @@ a:active {
 }
 
 .publication-authors a {
-   color: #A2A2D0;
+   color: #8878C3;
 }
 
 .publication-authors a:hover {
