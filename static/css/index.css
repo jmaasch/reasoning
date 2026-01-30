@@ -62,6 +62,26 @@ body {
 }
 
 
+/* unvisited link */
+a:link {
+  color: #A2A2D0;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
+
 .footer .icon-link {
     font-size: 25px;
     background-color: white !important;
