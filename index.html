@@ -149,9 +149,11 @@
           Based on a synthesis of the literature, we provide an operational definition for reasoning as a learnable, rule-governed process. This definition is intended for general use and community discussion. We express this definition in (1) natural language for intuition, (2) mathematical notation for concretization, and (3) pseudocode. See our <a href="static/pdfs/position.pdf" target="_blank">full paper</a> for further discussion.
           <br>
           <br>
-          <br>
-          <br>
           
+          First, we begin with definitions in plain English for intuition.
+          <br>
+          <br>
+
           <div class="box">
             <b>Definition 1 (Reasoning, informal).</b> The process of selecting and applying sequences of rules that act on prior beliefs and current evidence to obtain principled belief updates in evolving states.
           </div>
@@ -160,16 +162,63 @@
             <b>Definition 2 (Reasoner, informal).</b> A goal-oriented decision-maker that implements reasoning.
           </div>
 
+          Read more about each core component of Definitions 1 and 2 by expanding the terms below.
+
+          <br>
+          <br>
+
+          <details>
+            <summary><b>Process.</b></summary>
+            Reasoning is a dynamic process, not an output. Thus, reasoning entails $T \geq 1$ hops, stages, time steps, or <i>reasoning steps</i>. This process implies a design component: sequences of rules or actions are chosen by the reasoner according to some justification. The process of <i>selection</i> is where agency, intelligence, or creativity may come into play, while the process of <i>execution</i> necessitates exactness and rigor. Note that it may be perfectly reasonable for the selection criterion to be random selection.
+          </details>
+
+          <details>
+            <summary><b>Goal.</b></summary>
+            The reasoner generally executes a reasoning process to achieve some outcome of interest. This outcome is the <i>goal</i> one is reasoning toward: the answer to a complex question, the solution to a puzzle, the shortest path through a maze, a mathematical proof, the optimal action to take under resource constraints, etc. In distinguishing the goal-directed reasoner from the reasoning process itself, we highlight that the <i>validity</i> of the reasoning process is not necessarily tied to successful attainment of a goal. In practice, we can encode the goal in a stopping rule, where reasoning terminates when the rule is satisfied. We do not restrict our notion of goals to the formal sense used in RL, though it is compatible with this interpretation.
+          </details>
+
+          <details>
+            <summary><b>Rules.</b></summary>
+            Collectively, the rule set unambiguously maps the reasoning state at $t$ to the state at $t+1$. In general, rules are selected with some justification prior to deployment. Rules can take the form of algorithms, formulae, theorems, axioms, laws, policies, premises, assumptions, decision boundaries, etc. Rules can be extrinsically imposed on the reasoner (i.e., hard-coded by another individual or collective agent, such as a human or government) or they can be learned autonomously from data on-the-fly. Rules can be fixed or continuously updated in light of new information.
+          </details>
+
+          <details>
+            <summary><b>Evidence.</b></summary>
+            We model evidence as a continuous stream of data that is updated at each step $t$ or at intervals. <i>Current evidence</i> denotes information presented at $t$, along with the historical record: aggregated information up to $k \geq 0$ steps prior to $t$. Evidence may be gained directly through sequential interactions with an uncertain environment (as in online RL, field work in the natural sciences, etc.) or provided without direct collection (e.g., retrospective data collected by another agent). In trivial cases, external evidence is the empty set or is provided at $t=0$ and never updated.
+          </details>
+
+          <details>
+            <summary><b>Prior beliefs.</b></summary>
+            While evidence is a form of exogenous or extrinsically obtained knowledge, we model  beliefs as a form of endogenous or intrinsically obtained knowledge. <i>Prior beliefs</i> are the outputs of previous reasoning steps, up to step $t-k$ for $t > k \geq 1$. They can be viewed as intermediate conclusions along the reasoning pathway that led to step $t$. Often, they are defeasible: they can be overwritten if proven false (e.g., in backtracking proof search), refined if insufficient, or maintained and aggregated with current beliefs at step $t$. They can also be  provided at $t=0$ (e.g., initializing Bayesian priors based on convention when supporting evidence is not yet available). 
+          </details>
+
+          <details>
+            <summary><b>Current beliefs.</b></summary>
+            Current beliefs denote the conclusions drawn in the transition from $t-1$ to $t$. When $t=T$, current belief is equivalent to the <i>terminal conclusion</i> of the reasoning process. The nature of the terminal conclusion is a defining property of the type of reasoning performed, e.g.: the output of a function in mathematical reasoning, an optimal action in practical reasoning, a moral verdict in moral reasoning, a judiciary decision in legal reasoning, etc. 
+          </details>
+
+          <details>
+            <summary><b>Evolving states.</b></summary>
+            A reasoner will generally maintain an <i>internal representation</i> of its world state, which updates over time. The existence of an <i>external environment</i> is also implied by our choice to model evidence as a stream of extrinsic signals. However, we note that a well-defined concept of external environment is not relevant in all cases (e.g., in some mathematical reasoning domains). Thus, we place no requirements on the existence or direct observability of an external environment, physical world, etc., and only require an internal representation of the world (i.e., the state). We use the notion of an <i>evolving state</i> broadly to encode all of the above concepts: (1) dynamically updated internal state representations, (2) changing and/or uncertain external worlds, and (3) extrinsic sources of evidence. 
+          </details>
+
+          <br>
+
+          Finally, we provide our (abbreviated) formal definitions for <i>valid</i> and <i>sound reasoning</i>. For complete formal definitions and pseudocode, see our <a href="static/pdfs/position.pdf" target="_blank">full paper</a>.
+
+          <br>
+          <br>
+
           <div class="box">
-            <b>Definition 3 (Reasoning, formal).</b> Coming soon.
+            <b>Definition 3 (Reasoning, formal).</b> Let ${S}_t := \langle {B}_t, {E}_t, {R}_t \rangle$ denote the reasoner's state at time step $t$, where ${B}_t$ denotes current belief, ${E}_t$ denotes aggregated evidence up to time $t$, and ${R}_t$ denotes the current set of established rules. Then, <i>reasoning</i> is the iterated application over steps $t$ of rules $r \in {R}_{t-1}$ to prior beliefs ${B}_{t-1}$ and current evidence ${E}_{t}$, by which we obtain dynamically updated states ${S}_t$, and where every output ${B}_{t}$ for $t>0$ is the result of a rule application $r({B}_{t-1}, {E}_{t})$ to the contents of state ${S}_{t-1}$.
           </div>
 
           <div class="box">
-            <b>Definition 4 (Validity).</b> Coming soon.
+            <b>Definition 4 (Validity).</b> A transition from state ${S}_t$ to ${S}_{t+1}$ is <i>valid</i> if and only if it arises from the application of a rule $r \in {R}_t$ to components of state ${S}_t$.
           </div>
 
           <div class="box">
-            <b>Definition 5 (Soundness).</b> Coming soon.
+            <b>Definition 5 (Soundness).</b> A valid transition from state ${S}_t$ to ${S}_{t+1}$ is <i>sound</i> if and only if all premises (as encoded by beliefs, rules, and evidence) are true with respect to external evaluation. 
           </div>
 
           <div class="box">
