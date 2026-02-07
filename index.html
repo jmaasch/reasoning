@@ -234,14 +234,14 @@
 
           <details>
             <summary><b>Evidence.</b></summary>
-            Evidence is a form of exogenous or extrinsically obtained knowledge. We model evidence as a continuous stream of data that is updated at each step $t$ or at intervals. <i>Current evidence</i> denotes information presented at $t$, along with the historical record: aggregated information up to $k \geq 0$ steps prior to $t$. Evidence may be gained directly through sequential interactions with an uncertain environment (as in online RL, field work in the natural sciences, etc.) or provided without direct collection (e.g., retrospective data collected by another agent). In trivial cases, external evidence is the empty set or is provided at $t=0$ and never updated.
+            Evidence is a form of exogenous or extrinsically obtained information. We model evidence as a continuous stream of data that is updated at each step $t$ or at intervals. <i>Current evidence</i> denotes information presented at $t$, along with the historical record: aggregated information up to $k \geq 0$ steps prior to $t$. Evidence may be gained directly through sequential interactions with an uncertain environment (as in online RL, field work in the natural sciences, etc.) or provided without direct collection (e.g., retrospective data collected by another agent). In trivial cases, external evidence is the empty set or is provided at $t=0$ and never updated.
             <br>
             <br>
           </details>
 
           <details>
             <summary><b>Prior beliefs.</b></summary>
-            While evidence is a form of exogenous or extrinsically obtained knowledge, we model  beliefs as a form of endogenous or intrinsically obtained knowledge. <i>Prior beliefs</i> are the outputs of previous reasoning steps, up to step $t-k$ for $t > k \geq 1$. They can be viewed as intermediate conclusions along the reasoning pathway that led to step $t$. Often, they are defeasible: they can be overwritten if proven false (e.g., in backtracking proof search), refined if insufficient, or maintained and aggregated with current beliefs at step $t$. They can also be  provided at $t=0$ (e.g., initializing Bayesian priors based on convention when supporting evidence is not yet available). 
+            While evidence is a form of exogenous or extrinsically obtained information, we model  beliefs as a form of endogenous or intrinsically obtained information. <i>Prior beliefs</i> are the outputs of previous reasoning steps, up to step $t-k$ for $t > k \geq 1$. They can be viewed as intermediate conclusions along the reasoning pathway that led to step $t$. Often, they are defeasible: they can be overwritten if proven false (e.g., in backtracking proof search), refined if insufficient, or maintained and aggregated with current beliefs at step $t$. They can also be  provided at $t=0$ (e.g., initializing Bayesian priors based on convention when supporting evidence is not yet available). 
             <br>
             <br>
           </details>
